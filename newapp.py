@@ -26,6 +26,15 @@ Notes:
 - This implementation stores images as Base64 inside the user document in MongoDB.
 - The app uses minimal design (clean layout) and keeps everything in a single file.
 """
+import streamlit as st
+from pymongo import MongoClient
+
+# Access the secret key
+mongo_uri = st.secrets["MONGO_URI"]
+
+# Connect to MongoDB
+client = MongoClient(mongo_uri)
+db = client["your_database_name"]
 
 import streamlit as st
 from pymongo import MongoClient, ASCENDING
@@ -362,3 +371,4 @@ if "edit" in params and params.get("edit"):
 # --------------------------- Footer ---------------------------
 st.markdown("---")
 st.caption("Built with Streamlit • Minimal & Clean • Data stored in MongoDB")
+
